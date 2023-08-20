@@ -19,6 +19,11 @@ window.addEventListener('load', () => {
   loginModal.show();
 });
 
+window.addEventListener('resize', () => {
+  canvas.height = window.innerHeight;
+  canvas.width = window.innerWidth;
+});
+
 document.querySelector('.name-form').addEventListener('submit', (e) => {
   e.preventDefault();
   player.name = document.querySelector('#name-input').value;
@@ -26,4 +31,11 @@ document.querySelector('.name-form').addEventListener('submit', (e) => {
   loginModal.hide();
   document.querySelector('.player-name').innerText = player.name;
   spawnModal.show();
+});
+
+document.querySelector('.start-game').addEventListener('click', (e) => {
+  spawnModal.hide();
+  const uiArr = Array.from(document.querySelectorAll('.hiddenOnStart'));
+  uiArr.forEach((uiEl) => uiEl.removeAttribute('hidden'));
+  init();
 });
