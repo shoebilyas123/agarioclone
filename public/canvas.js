@@ -4,15 +4,28 @@ const init = () => {
 
 player.locX = Math.floor(500 * Math.random() + 10);
 player.locY = Math.floor(500 * Math.random() + 10);
+let orbs = [];
 
 const drawPlayer = () => {
   context.beginPath();
   context.fillStyle = 'rgb(255,0,0)';
   context.arc(player.locX, player.locY, 10, 0, 2 * Math.PI);
+
   context.fill();
   context.lineWidth = 3;
   context.strokeStyle = 'rgb(0,255,0)';
   context.stroke();
+};
+
+const drawOrbs = () => {
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  orbs.forEach((orb) => {
+    context.beginPath();
+    context.fillStyle = orb.color;
+    context.arc(orb.locX, orb.locY, 10, 0, 2 * Math.PI);
+    context.fill();
+  });
+  drawPlayer();
 };
 
 const draw = () => {
@@ -23,7 +36,8 @@ const draw = () => {
   const camY = -player.locY + canvas.height / 2;
   context.translate(camX, camY);
 
-  drawPlayer();
+  //   drawPlayer();
+  drawOrbs();
   //Controlled loop
   //  Runs recursively every frame
   //   if fps  = 35
@@ -57,7 +71,7 @@ canvas.addEventListener('mousemove', (event) => {
     yVector = 1 - (angleDeg + 90) / 90;
   }
 
-  speed = 10;
+  speed = 1;
   xV = xVector;
   yV = yVector;
 
