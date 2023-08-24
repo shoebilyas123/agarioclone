@@ -17,14 +17,16 @@ const drawPlayer = () => {
   context.stroke();
 };
 
-const drawOrbs = () => {
+const drawOrb = (orb) => {
+  context.beginPath();
+  context.fillStyle = orb.color;
+  context.arc(orb.locX, orb.locY, 10, 0, 2 * Math.PI);
+  context.fill();
+};
+
+const drawOrbsCollection = () => {
   context.clearRect(0, 0, canvas.width, canvas.height);
-  orbs.forEach((orb) => {
-    context.beginPath();
-    context.fillStyle = orb.color;
-    context.arc(orb.locX, orb.locY, 10, 0, 2 * Math.PI);
-    context.fill();
-  });
+  orbs.forEach((orb) => drawOrb(orb));
   drawPlayer();
 };
 

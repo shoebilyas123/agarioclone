@@ -11,16 +11,12 @@ const orbs = [];
 
 function initGame() {
   // loop 500 times and push a new orb onto our array
-  for (let i = 0; i < 500; i++) {
-    orbs.push(new Orb());
-  }
-  console.log(orbs);
+  for (let i = 0; i < 50; i++) orbs.push(new Orb());
 }
 
 io.on('connect', (socket) => {
+  initGame();
   socket.emit('init', { orbs });
 });
-
-initGame();
 
 module.exports = io;

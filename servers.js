@@ -8,7 +8,6 @@ const PORT = 8080;
 
 const expressServer = app.listen(PORT);
 const io = socketio(expressServer);
-console.log('Express and SocketIO are listening to port: ', PORT);
 
 // App organisation
 
