@@ -7,7 +7,7 @@ console.log({ wHeight, wWidth });
 const canvas = document.getElementById('the-canvas');
 const context = canvas.getContext('2d');
 
-const player = {}; // "this" player
+const player = { name: '' }; // "this" player
 
 canvas.width = wWidth;
 canvas.height = wHeight;
@@ -27,7 +27,6 @@ window.addEventListener('resize', () => {
 document.querySelector('.name-form').addEventListener('submit', (e) => {
   e.preventDefault();
   player.name = document.querySelector('#name-input').value;
-  console.log({ player });
   loginModal.hide();
   document.querySelector('.player-name').innerText = player.name;
   spawnModal.show();
